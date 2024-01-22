@@ -52,10 +52,11 @@
     <!-- * Thumbnails -->
     <div id="thumbnails">
       <img v-for="(destination, index) in destinations" :src="'img/' + destination.image" :alt="destination.name"
-        :class="{ active: index === currentIndex }">
+        :class="{ active: index === currentIndex }" @click="currentImage(index)">
     </div>
   </div>
 </body>
+
 
 
 

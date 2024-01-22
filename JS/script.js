@@ -22,7 +22,22 @@ const app = createApp({
                 }
             }
         },
+        currentImage(index) {
+            this.currentIndex = index;
+        },
+        startAutoplay() {
+            this.autoplayInterval = setInterval(() => {
+                this.direction('next');
+            }, 3000);
+        },
+        /*  stopAutoplay() {
+           clearInterval(this.autoplayInterval);
+         }, */
+    },
+    mounted() {
+        this.startAutoplay();
     },
 });
 
 app.mount('#root');
+
