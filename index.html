@@ -5,55 +5,58 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-
   <link rel="icon" href="favicon.ico" type="image/ico" />
+  <title>Vue Carousel</title>
 
-  <!-- Bootstrap Icon -->
+
+  <!-- * Bootstrap Icon -->
   <link rel='stylesheet'
     href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.2/font/bootstrap-icons.min.css'
     integrity='sha512-D1liES3uvDpPrgk7vXR/hR/sukGn7EtDWEyvpdLsyalQYq6v6YUsTUJmku7B4rcuQ21rf0UTksw2i/2Pdjbd3g=='
     crossorigin='anonymous' />
 
 
-  <!-- Style -->
+  <!-- * Style -->
   <link rel="stylesheet" href="css/style.css" />
 
-  <!-- JavaScript -->
+  <!-- * VUE 3 -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <!-- * JavaScript -->
   <script src="js/data.js"></script>
   <script defer src="js/script.js"></script>
 
 </head>
 
 <body>
-
-  <div class="container">
+  <div id="root" class="container">
     <div id="carousel">
-      <!-- Prev button -->
-      <i id="prev-button" class="bi bi-arrow-left-circle-fill" role="button"></i>
+      <!-- * Prev button -->
+      <i id="prev-button" class="bi bi-arrow-left-circle-fill" role="button" @click="direction('prev')"></i>
 
-      <!-- Gallery -->
+      <!-- * Gallery -->
       <div class="gallery">
-        <figure class="active">
+        <figure v-for="(destination, index) in destinations" v-show="index === currentIndex">
           <figcaption>
-            <h2>Svezia</h2>
-            <h3>Scandinavia's blend of nature and innovation.</h3>
+            <h2>{{ destination.name }}</h2>
+            <h3>{{ destination.description }}</h3>
           </figcaption>
-          <img src="img/01.jpg" alt="Svezia">
+          <img :src="'img/' + destination.image" :alt="destination.name">
         </figure>
       </div>
 
-      <!-- next button -->
-      <i id="next-button" class="bi bi-arrow-right-circle-fill" role="button"></i>
+      <!-- * Next button -->
+      <i id="next-button" class="bi bi-arrow-right-circle-fill" role="button" @click="direction('next')"></i>
     </div>
 
-    <!-- Thumbnails -->
+    <!-- * Thumbnails -->
     <div id="thumbnails">
-      <img src="img/01.jpg" alt="Svezia" class="active">
+      <img v-for="(destination, index) in destinations" :src="'img/' + destination.image" :alt="destination.name"
+        :class="{ active: index === currentIndex }">
     </div>
-
-
   </div>
 </body>
+
+
 
 </html>
