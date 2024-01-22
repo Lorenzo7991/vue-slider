@@ -36,7 +36,8 @@
 
       <!-- * Gallery -->
       <div class="gallery">
-        <figure v-for="(destination, index) in destinations" v-show="index === currentIndex">
+        <figure v-for="(destination, index) in destinations" v-show="index === currentIndex" @mouseenter="stopAutoplay"
+          @mouseleave="startAutoplay">
           <figcaption>
             <h2>{{ destination.name }}</h2>
             <h3>{{ destination.description }}</h3>
@@ -52,7 +53,8 @@
     <!-- * Thumbnails -->
     <div id="thumbnails">
       <img v-for="(destination, index) in destinations" :src="'img/' + destination.image" :alt="destination.name"
-        :class="{ active: index === currentIndex }" @click="currentImage(index)">
+        :class="{ active: index === currentIndex }" @click="currentImage(index)" @mouseenter="stopAutoplay"
+        @mouseleave="startAutoplay">
     </div>
   </div>
 </body>

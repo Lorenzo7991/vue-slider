@@ -11,12 +11,12 @@ const app = createApp({
     methods: {
         direction(direction) {
             if (direction === 'next') {
-                this.currentIndex += 1;
+                this.currentIndex++;
                 if (this.currentIndex === this.destinations.length) {
                     this.currentIndex = 0;
                 }
             } else {
-                this.currentIndex -= 1;
+                this.currentIndex--;
                 if (this.currentIndex < 0) {
                     this.currentIndex = this.destinations.length - 1;
                 }
@@ -30,9 +30,9 @@ const app = createApp({
                 this.direction('next');
             }, 3000);
         },
-        /*  stopAutoplay() {
-           clearInterval(this.autoplayInterval);
-         }, */
+        stopAutoplay() {
+            clearInterval(this.autoplayInterval);
+        },
     },
     mounted() {
         this.startAutoplay();
