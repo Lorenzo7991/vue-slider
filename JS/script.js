@@ -15,7 +15,7 @@ const app = createApp({
                 if (this.currentIndex === this.destinations.length) {
                     this.currentIndex = 0;
                 }
-            } else if (direction === 'prev') {
+            } else {
                 this.currentIndex -= 1;
                 if (this.currentIndex < 0) {
                     this.currentIndex = this.destinations.length - 1;
