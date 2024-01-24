@@ -10,11 +10,13 @@ const app = createApp({
     },
     methods: {
         direction(direction) {
+            //Next button condition
             if (direction === 'next') {
                 this.currentIndex++;
                 if (this.currentIndex === this.destinations.length) {
                     this.currentIndex = 0;
                 }
+                //Prev button condition
             } else {
                 this.currentIndex--;
                 if (this.currentIndex < 0) {
@@ -23,6 +25,7 @@ const app = createApp({
             }
         },
         currentImage(index) {
+            //Thumbnails figure scope
             this.currentIndex = index;
         },
         startAutoplay() {
